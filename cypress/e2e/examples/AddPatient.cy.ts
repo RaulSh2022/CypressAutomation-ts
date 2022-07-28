@@ -7,7 +7,6 @@ let cred: IDataInfo;
 describe('Add Patient Suite', function () {
     before(function () {
         // runs once beofre every test case in the block
-        
         cy.fixture('DataInfo').then(function (data) {
             cred = data;
             cy.wrap(cred).as("cred");

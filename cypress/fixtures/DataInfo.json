@@ -5,7 +5,7 @@
   },
   "appointmentShceduling": {
     "renderingProvider": "Alexander string Lin M.D.",
-    "billingProvider": "Devon Davis",
+    "billingProvider": "Gentem Test Practice",
     "serviceLocation": "Service",
     "reasonForVisit": "Fever"
   },
@@ -13,5 +13,9 @@
     "diagnoseCode": "F43.0",
     "cptCode": "59025",
     "charges": "100"
+  },
+  "serviceLineStatus": {
+    "serviceLineStatusNotSubmitted": "Not Submitted",
+    "serviceLineStatusSubmitted": "Submitted"
   }
 }

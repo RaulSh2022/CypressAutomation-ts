@@ -1,3 +1,4 @@
+import { IDataInfo } from '../../fixtures/DataInfo';
 import { getAppointmentLink } from "./DashboardPage";
 
 export const getNewAppointmentButton = () => cy.xpath("//button[text()='+ New']");
@@ -32,7 +33,7 @@ export const getICDMapExpandedTab = () => cy.xpath("//table[@class='cptCodesTabl
 export const getICDMapCheckBox = () => cy.xpath("//div[@role='presentation']//*[contains(@class,'Checkbox')]");
 export const getChargeTextBox = () => cy.xpath("//input[contains(@name,'charge')]");
 export const getInvisibleBack = () => cy.xpath("//*[contains(@class,'MuiBackdrop-root MuiBackdrop-invisible')]");
-
+export const getServiceLineStatus = () => cy.xpath("//div[contains(@id,'gentem_status')]//span");
 
 
 export const navigateToAppointmentPage = () => {
@@ -40,11 +41,11 @@ export const navigateToAppointmentPage = () => {
     getAppointmentHeader().should("be.visible");
 
 }
-export const addDiagnoseUnderBillingSection = (diagnoseName) => {
+export const addDiagnoseUnderBillingSection = (diagnoseName:string) => {
     getDiagnoseSearchBox().type(diagnoseName);
     getDiagnoseOption().click().then(data => {
-        getDiagnoseSearchBox().then((input) => {
-            const val = input[0].val();
+        getDiagnoseSearchBox().each((input) => {
+            const val = input.val();
             cy.log("==>" + val);
             expect(val).to.include(diagnoseName);
         })
@@ -52,22 +53,22 @@ export const addDiagnoseUnderBillingSection = (diagnoseName) => {
     })
     getDiagnoseAddButton().click();
 }
-export const addProceduresUnderBillingSection = (cptCode) => {
+export const addProceduresUnderBillingSection = (cptCode:string) => {
     getProcedureSearchBox().type(cptCode);
     getProcedureOption().click().then(data => {
-        getProcedureSearchBox().then(($input) => {
-            const val = $input[0].val();
+        getProcedureSearchBox().each(($input) => {
+            const val = $input.val();
             expect(val).to.include(cptCode);
         })
 
     });
     getProcedureAddButton().click();
 }
-export const selectPatient = (patientName) => {
+export const selectPatient = (patientName:string) => {
     SearchAndSelectPatientTextBox().type(patientName);
     getSearchPatientOption().click();
 }
-export const enterDetailsOnSchedulingSection = (cred) => {
+export const enterDetailsOnSchedulingSection = (cred:IDataInfo) => {
     getBillingProviderTextBox().clear();
     getBillingProviderTextBox().type(cred.appointmentShceduling.billingProvider);
     getBillingProviderOption().click();
@@ -99,7 +100,7 @@ export const validateBillingIsEnabled = () => {
     getScheduledStatus().should("be.visible");
 }
 
-export const enterDetailsOnBillingSection = (cred) => {
+export const enterDetailsOnBillingSection = (cred:IDataInfo) => {
     addDiagnoseUnderBillingSection(cred.appointmentBilling.diagnoseCode);
     addProceduresUnderBillingSection(cred.appointmentBilling.cptCode);
     getICDMapExpandedTab().click();
@@ -112,7 +113,7 @@ export const saveAppointment = () => {
     getConfirmButton().click();
     getCreateButton().click({ force: true });
 }
-export const addAppointment = (patientName, cred) => {
+export const addAppointment = (patientName:string, cred:IDataInfo) => {
     navigateToAppointmentPage();
     cy.wait(500);
     getNewAppointmentButton().click();
@@ -129,9 +130,9 @@ export const addAppointment = (patientName, cred) => {
 
 }
 export const getClaimNum = () => {
-    getClaimLink().then(data => {
+    getClaimLink().each(data => {
         let claimNum;
-        claimNum = data[0].text().split(" ");
+        claimNum = data.text().split(" ");
         claimNum = claimNum[1];
         return claimNum;
     })

@@ -14,4 +14,8 @@ export interface IDataInfo {
     renderingProvider: string;
     serviceLocation: string;
   };
+  serviceLineStatus: {
+    "serviceLineStatusNotSubmitted": string,
+    "serviceLineStatusSubmitted": string
+  }
 }

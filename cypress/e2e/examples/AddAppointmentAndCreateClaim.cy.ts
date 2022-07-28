@@ -1,10 +1,13 @@
 /// <reference types="Cypress" />
-import { addAppointment, getClaimLink } from '../../support/pageObjects/AppointmentPage';
-import { navigateToClaimspage, searchAndValidateClaimNumInClaimTable, validateAndAddClaim } from '../../support/pageObjects/ClaimsPage';
 
-let cred;
-let claimNum;
-let claimNumber;
+import { IDataInfo } from '../../fixtures/DataInfo';
+import { addAppointment, getClaimLink } from '../../support/pageObjects/AppointmentPage';
+import { navigateToClaimsPage, searchAndValidateClaimNumInClaimTable, validateAndAddClaim } from '../../support/pageObjects/ClaimsPage';
+
+let cred: IDataInfo;
+let claimNum: string[];
+let claimNumber: string;
+
 describe('Appointment and Create Claim Suite', function () {
     before(function () {
         // runs once before every test case in the block
@@ -18,12 +21,12 @@ describe('Appointment and Create Claim Suite', function () {
     })
     it('Add AppointmentAndCreateClaim', () => {
         addAppointment("Rahul test", cred);
-        getClaimLink().then(data => {
-            claimNum = data[0].text().split(" ");
+        getClaimLink().each((data) => {
+            claimNum = data.text().split(" ");
             claimNumber = claimNum[1];
         })
         cy.then(() => {
-            navigateToClaimspage();
+            navigateToClaimsPage();
             searchAndValidateClaimNumInClaimTable(claimNumber);
             validateAndAddClaim(cred);
         })
