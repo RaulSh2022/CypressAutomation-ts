@@ -1,0 +1,32 @@
+{
+  "name": "cypressautomation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "headTest": "npm run test -- --headed"
+  },
+  "author": "Rahul Sharma",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.0.6",
+    "cypress": "^10.3.1",
+    "cypress-iframe": "^1.0.1",
+    "cypress-xpath": "^1.8.0",
+    "mocha": "^10.0.0",
+    "mochawesome": "^7.1.3",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "faker": "^5.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharmarahul2022/CypressAutomation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sharmarahul2022/CypressAutomation/issues"
+  },
+  "homepage": "https://github.com/sharmarahul2022/CypressAutomation#readme"
+}

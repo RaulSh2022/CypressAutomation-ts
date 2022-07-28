@@ -1,1 +1,1 @@
-# CypressAutomation-ts
+# CypressAutomation

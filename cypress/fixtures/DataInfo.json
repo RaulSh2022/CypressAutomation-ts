@@ -1,0 +1,17 @@
+{
+  "gentemLoginPage": {
+    "email": "rahul.sharma@gentem.com",
+    "password": "Rahul$123@"
+  },
+  "appointmentShceduling": {
+    "renderingProvider": "Alexander string Lin M.D.",
+    "billingProvider": "Devon Davis",
+    "serviceLocation": "Service",
+    "reasonForVisit": "Fever"
+  },
+  "appointmentBilling": {
+    "diagnoseCode": "F43.0",
+    "cptCode": "59025",
+    "charges": "100"
+  }
+}
